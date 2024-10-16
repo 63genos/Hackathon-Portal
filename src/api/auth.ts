@@ -1,7 +1,10 @@
-import axios from "axios";
-const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+import axios from 'axios';
 
-export const getUserStatus = async () => {
+// Ensure that your environment variables are defined in a .env file.
+// For example: REACT_APP_BACKEND_URL=http://localhost:5000
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
+export const getUserStatus = async (): Promise<number> => {
     try {
         const response = await axios.get(`${backendUrl}/exists`);
         if (response.status === 200) {
@@ -10,18 +13,18 @@ export const getUserStatus = async () => {
     } catch (error) {
         console.error("Error checking authentication:", error);
     }
-    return 0;
+    return 0; // Return 0 if there is an error or no admin status
 }
 
-export const getSessionUser = async () => {
+export const getSessionUser = async (): Promise<any | null> => {
     try {
         const response = await axios.get(`${backendUrl}/session-info`);
-        console.log(response.data)
+        console.log(response.data);
         if (response.status === 200) {
             return response.data;
         }
     } catch (error) {
         console.error("Error checking authentication:", error);
     }
-    return null;
+    return null; // Return null if there is an error or no session user
 }

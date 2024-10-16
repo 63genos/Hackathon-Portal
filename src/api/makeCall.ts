@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 interface ApiCallOptions {
     method?: string;
@@ -12,7 +12,8 @@ interface CustomApiError extends Error {
 }
 
 async function makeApiCall(endpoint: string, options: ApiCallOptions) {
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+    // Change to REACT_APP_BACKEND_URL for a React app
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
     try {
         const response = await axios({
