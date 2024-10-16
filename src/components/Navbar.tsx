@@ -3,7 +3,7 @@ import { Box, Flex, Link, IconButton, Drawer, DrawerBody, DrawerHeader, DrawerOv
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import PrimaryButton from './buttons';
 import Session from 'supertokens-auth-react/recipe/session';
-import SignOutModal from './signOutModal';
+import SignOutModal from './SignOutModal';
 import { signOut } from 'supertokens-auth-react/recipe/thirdparty';
 import { useNavigate } from 'react-router-dom';
 

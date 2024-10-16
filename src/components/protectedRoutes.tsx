@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useAuth } from '../hooks/useAuth';
-import LoadingPortal from './LoadingPortal';
-import NotRegisteredModal from './NotRegistered';
+import LoadingPortal from './loadingPortal';
+import NotRegisteredModal from './notRegistered';
 import { Text } from '@chakra-ui/react';
 
 type WrappedComponentProps = {

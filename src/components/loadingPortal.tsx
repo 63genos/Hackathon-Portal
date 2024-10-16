@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "./Sidebar";
-import CustomHead from "./CustomHead"; // Ensure the naming is consistent with your file structure
-import AdminSideBar from "./AdminSidebar"; // Ensure the naming is consistent with your file structure
+import CustomHead from "./customHead"; // Ensure the naming is consistent with your file structure
+import AdminSideBar from "./adminSidebar"; // Ensure the naming is consistent with your file structure
 
 // LoadingPortal Component
 const LoadingPortal: React.FC = () => {

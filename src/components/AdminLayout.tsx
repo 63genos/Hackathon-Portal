@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
-import AdminSideBar from './AdminSideBar';
+import AdminSideBar from './adminSidebar';
 
 interface AdminLayoutProps {
     children: ReactNode;

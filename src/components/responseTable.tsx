@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Flex, Text, VStack, HStack } from '@chakra-ui/react';
-import SignOutModal from './signOutModal';
+import SignOutModal from './SignOutModal';
 import makeApiCall from '../api/makeCall';
 import CustomModal from './customModal';
 
