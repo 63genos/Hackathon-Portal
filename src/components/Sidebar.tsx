@@ -4,7 +4,7 @@ import {
   Box, Flex, Image, Text, VStack, Divider, useDisclosure, Drawer, DrawerBody,
   DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useMediaQuery,
 } from '@chakra-ui/react';
-import SignOutModal from './SignOutModal'; // Assuming you have this component
+import SignOutModal from './signOutModal'; // Assuming you have this component
 import { signOut } from 'supertokens-auth-react/recipe/thirdparty'; // Keep this if using supertokens
 
 interface SidebarLink {

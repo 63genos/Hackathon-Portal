@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import LoadingPortal from './loadingPortal';
 import NotRegisteredModal from './notRegistered';
@@ -12,16 +12,13 @@ type WrappedComponentProps = {
 const ProtectedRoute = (WrappedComponent: React.ComponentType<WrappedComponentProps>) => {
     const Wrapper: React.FC = (props) => {
         const { isSessionExists, isAuthenticated, loading } = useAuth();
-        const router = useRouter();
+        const navigate = useNavigate();
 
         useEffect(() => {
             if (!loading && !isSessionExists) {
-                router.push({
-                    pathname: '/login',
-                    query: { redirectTo: router.asPath }
-                });
+                navigate('/login', { state: { redirectTo: window.location.pathname } });
             }
-        }, [loading, isSessionExists, router]);
+        }, [loading, isSessionExists, navigate]);
 
         if (loading) {
             return <LoadingPortal />;
@@ -29,7 +26,7 @@ const ProtectedRoute = (WrappedComponent: React.ComponentType<WrappedComponentPr
 
         const onClose = async () => {
             // Perform any cleanup or sign-out logic if needed
-            router.replace("/register");
+            navigate("/register");
         };
 
         return (
