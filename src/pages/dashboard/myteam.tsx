@@ -1,0 +1,105 @@
+import React, { useEffect, useState } from "react";
+import { Box, Flex, Heading, Spinner, Stack, Text } from "@chakra-ui/react";
+import MembersList from "./components/team";
+import ProtectedRoute from "./components/protectedRoutes";
+import DashboardLayout from "./components/DashboardLayout";
+import axios from "axios";
+
+// Replace this with actual backend URL
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
+interface CustomHeadProps {
+    title: string;
+    description: string;
+}
+
+const CustomHead: React.FC<CustomHeadProps> = ({ title }) => {
+    useEffect(() => {
+        document.title = title;
+    }, [title]);
+
+    return null;
+};
+
+type Member = {
+    name: string;
+    email: string;
+    isLeader: boolean;
+};
+
+interface TeamData {
+    name: string;
+    members_email: string[];
+    members_name: string[];
+}
+
+function MyTeam() {
+    const [jsonData, setJsonData] = useState<TeamData | undefined>();
+    const [isLoading, setIsLoading] = useState(false);
+
+    const getData = async () => {
+        setIsLoading(true);
+
+        try {
+            const response = await axios.get(`${backendUrl}/team`);
+            setJsonData(response.data as TeamData);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        getData();
+    }, []);
+
+    function makeMembersList(): Member[] {
+        if (!jsonData) return [];
+
+        return jsonData.members_name.map((name, index) => ({
+            name,
+            email: jsonData.members_email[index],
+            isLeader: index === 0,
+        }));
+    }
+
+    return (
+        <div>
+            <CustomHead
+                title="Hackathon Dashboard | E-Cell IIT Hyderabad - NPCI"
+                description="Welcome to the Dashboard of E-Cell IIT Hyderabad & NPCI collaborative Hackathon."
+            />
+            <DashboardLayout>
+                {isLoading ? (
+                    <Flex direction="column" align="center" justify="center" height="100vh" textAlign="center">
+                        <Spinner size="xl" />
+                    </Flex>
+                ) : jsonData ? (
+                    <>
+                        <Flex ml={{ base: "24px", lg: "0px" }} mt={{ base: "80px", lg: "40px" }} align={{ base: "start", lg: "center" }} justify="space-between" flexDirection="column">
+                            <Stack direction="row">
+                                <Text fontWeight="500" color="white" fontSize={{ base: "1.5rem", lg: "2rem" }} textAlign="center">
+                                    Team name -
+                                </Text>
+                                <Text fontSize={{ base: "1.5rem", lg: "2rem" }} color="white" textAlign="center" fontWeight="bold">
+                                    {jsonData.name}
+                                </Text>
+                            </Stack>
+                            <Box mt={{ base: "32px", lg: "48px" }} width={{ base: "95%", lg: "54%", "2xl": "48%" }}>
+                                <Text mb="12px" fontSize={{ base: "1.4rem", lg: "1.5rem" }} color="white" textAlign="start" fontWeight="semibold">
+                                    Members
+                                </Text>
+                                <MembersList members={makeMembersList()} />
+                            </Box>
+                        </Flex>
+                    </>
+                ) : (
+                    <div style={{ display: "flex", justifyContent: "center" }}>Error fetching team data. Please try again later.</div>
+                )}
+            </DashboardLayout>
+        </div>
+    );
+}
+
+export default ProtectedRoute(MyTeam);
