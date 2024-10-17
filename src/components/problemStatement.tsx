@@ -8,7 +8,7 @@ type JSONData = {
 
 interface Props {
     isLoading: boolean;
-    jsonData: JSONData | null; // Allow null to handle cases where data might not be available
+    jsonData: JSONData | null; // Allow null to handle cases where data might not be availablea
 }
 
 const ProblemStatementComponent: React.FC<Props> = ({ isLoading, jsonData }) => {
