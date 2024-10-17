@@ -77,7 +77,7 @@ const Sidebar: React.FC = () => {
       )}
       
       {/* Sign Out Modal */}
-      <SignOutModal isVisible={isModalVisible} onConfirm={confirmSignOut} onCancel={() => setModalVisible(false)} />
+      <SignOutModal title='Are you sure you want to sign out?'  isVisible={isModalVisible} onConfirm={confirmSignOut} onClose={() => setModalVisible(false)} />
     </>
   );
 };

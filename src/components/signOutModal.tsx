@@ -14,7 +14,7 @@ interface SignOutModalProps {
     isVisible: boolean;
     onClose: () => void;
     onConfirm: () => void;
-    onCancel: () => void;
+    // onCancel: () => void;
     title: string;
     isLoading?: boolean;
 }
