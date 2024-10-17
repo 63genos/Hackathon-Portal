@@ -1,0 +1,392 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  font-family: 'Montserrat', sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: #06081A;
+}
+
+
+.sidebarContainer {
+  display: flex;
+  align-items: start;
+}
+
+.container {
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.leaderboard {
+  max-width: 80%;
+  margin-top: 2rem;
+  margin: auto;
+}
+
+table.table {
+  padding: 2rem;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 15px;
+  border: none;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background-color: #1f29375c;
+}
+
+table.table>tr {
+  border-color: var(--background-color);
+  border-left: 2px;
+  border-right: 2px;
+  border: none;
+}
+
+.heading {
+  text-overflow: ellipsis;
+  letter-spacing: 8px;
+  color: white;
+  font-size: 2.2rem;
+  font-weight: 700;
+  font-family: 'Montserrat';
+  font-style: normal;
+  margin-left: 8rem;
+  margin-bottom: 36px;
+}
+
+.table th {
+  padding: 0;
+  text-align: center;
+  font-weight: 580;
+}
+
+.table td {
+  text-align: center;
+  font-size: 1.75rem;
+  height: 4rem;
+  line-height: 4rem;
+  border: none;
+  padding: 0;
+}
+
+.tableheading {
+  background-color: #1f2937;
+  height: 80px;
+  line-height: 80px;
+  font-size: 24px;
+  vertical-align: center;
+  margin: auto;
+  border-radius: 15px;
+}
+
+
+.tableheading tr {
+  border-radius: 15px;
+}
+
+/* .dashboardBG {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: fixed;
+} */
+
+.contentContainer {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  overflow: auto;
+  padding: 12px;
+  z-index: 1;
+}
+
+.centerContainer {
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+.mobileButton {
+  display: flex;
+  top: 0;
+  z-index: 2;
+}
+
+.conainerWithMargin {
+  margin-left: 16rem;
+}
+
+.subheading {
+  text-overflow: ellipsis;
+  color: #f27b22;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Montserrat';
+  /* font-style: normal; */
+  margin-left: 8rem;
+}
+
+.membersListContainer {
+  margin-left: 8rem;
+}
+
+.backtohome {
+  display: flex;
+}
+
+.faqsContainer {
+  position: relative;
+  z-index: 2;
+  left: 0;
+}
+
+.background {
+  position: fixed;
+  height: 1841px;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  background-image: linear-gradient(180.03deg, #788bff 49.97%, #bfd7ff 99.97%);
+  z-index: 1;
+  transition: transform 1s ease, height 1s ease, width 1s ease, box-shadow 1s ease;
+  transform: translate(-40%, -25%);
+}
+
+.logoINDashboardECELL {
+  width: 280px;
+  height: 76px;
+}
+
+.Hamburger {
+  color: white;
+}
+
+.statement {
+  /* width: 100%; */
+  text-overflow: ellipsis;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-family: 'Montserrat';
+  font-style: normal;
+  /* margin-left: 8rem; */
+  margin-bottom: 26px;
+}
+
+.problem_points {
+  /* width: 100%; */
+  margin-top: 12px;
+  text-overflow: ellipsis;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-family: 'Montserrat';
+  font-style: normal;
+  margin-left: 2.5rem;
+  list-style-type: circle;
+}
+
+.problem_list {
+  margin-bottom: 26px;
+}
+
+
+.submitButton {
+  background-color: #2f5b98;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+
+.registration_heading {
+  text-overflow: ellipsis;
+  color: #FFFFFF;
+  font-size: 2rem;
+  font-family: 'Montserrat';
+  font-style: normal;
+  margin-bottom: 36px;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.StepTitle {
+  color: white;
+  font-size: 5rem;
+
+}
+
+.StepDescription {
+  color: #1f2937;
+  font-size: 10rem;
+}
+
+.customModal {
+  background: #1f2937;
+}
+
+.handleTeamWidth {
+  width: 600px;
+}
+
+@media only screen and (max-width: 1150px) {
+  .handleTeamWidth {
+    width: 500px;
+  }
+
+  .ecellLogo {
+    display: none;
+  }
+
+  .Hamburger {
+    color: black;
+  }
+
+  .statement {
+    font-size: 1.2rem;
+    margin-left: 2rem;
+    margin-bottom: 26px;
+  }
+
+  .problem_points {
+    font-size: 1.25rem;
+    /* margin-left: 5rem; */
+    list-style-type: circle;
+  }
+
+  .problem_list {
+    margin-bottom: 26px;
+  }
+
+
+}
+
+
+@media only screen and (max-width: 640px) {
+  .handleTeamWidth {
+    width: 360px;
+  }
+
+  .contentContainer {
+    left: 0;
+    margin-left: 0px;
+  }
+
+  .conainerWithMargin {
+    margin-left: 0px;
+  }
+
+  .table th {
+    font-size: 1.2rem;
+  }
+
+  .table td {
+    font-size: 1.2rem;
+  }
+
+  .heading {
+    font-size: 1.8rem;
+    margin-left: 0;
+    margin-top: 2.2rem;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .subheading {
+    font-size: 1.2rem;
+    margin-left: 0;
+    margin-top: 2.2rem;
+    text-align: center;
+  }
+
+  .centerContainer {
+    max-width: none;
+  }
+
+  .membersListContainer {
+    margin-left: 0px;
+  }
+
+  .ecellLogo {
+    width: 39px;
+    height: 60px;
+    left: 16px;
+    top: 16px;
+  }
+
+  .statement {
+    font-size: 1.2rem;
+    margin-left: 0;
+    margin-bottom: 26px;
+  }
+
+  .problem_points {
+    font-size: 1.25rem;
+    margin-left: 2rem;
+    list-style-type: circle;
+  }
+
+  .problem_list {
+    margin-bottom: 26px;
+  }
+
+  .submitButton {
+    background-color: #1f2937;
+    color: white;
+    /* Ensure the text color is white for better contrast */
+  }
+
+  .answer_submission {
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
+  }
+
+  .registration_heading {
+    text-overflow: ellipsis;
+    font-size: 2rem;
+    margin-bottom: 4px;
+    margin-right: 0;
+    margin-top: 2.5rem;
+  }
+
+}

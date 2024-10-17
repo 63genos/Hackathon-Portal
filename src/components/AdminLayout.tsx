@@ -10,7 +10,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
     return (
         <Flex>
             <AdminSideBar />
-            <Box minHeight="100vh" flex="1" ml={{ base: 0, lg: "300px" }} p={1}>
+            <Box minHeight="100vh" flex="1.25" ml={{ base: 0, lg: "300px" }} p={1}>
                 {children}
             </Box>
         </Flex>
