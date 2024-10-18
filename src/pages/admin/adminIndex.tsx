@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Session from 'supertokens-auth-react/recipe/session';
 import AdminProtectedRoute from './components/adminProtectedRoute';
 
+//problem with sidebar
 interface CustomHeadProps {
     title: string;
     description: string;
