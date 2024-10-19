@@ -63,7 +63,7 @@ function TeamsTable({ tableProp }: FinalProp) {
     } catch (error) {
       console.error('Error fetching data:', error);
       setIsPromoteVis(false);
-      if ((error as CustomApiError)?.status && (error as CustomApiError).status > 400) {
+      if ((error as CustomApiError)?.status) {
         setErrorMessage((error as CustomApiError).data.message);
         setIsError(true);
       }

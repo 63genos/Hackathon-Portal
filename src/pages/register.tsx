@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Box, Flex, Heading, Spinner } from "@chakra-ui/react";
-import Navbar from './components/Navbar';
-import RegistrationForm from './components/registerComponent';
-import CustomModal from './components/customModal';
+import Navbar from '../components/Navbar';
+import RegistrationForm from '../components/registerComponent';
+import CustomModal from '../components/customModal';
 import axios from "axios";
 import styles from './styles/home.module.css';
+import { getSessionUser } from "../api/auth";
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL; // Adjusted for React
 
@@ -32,8 +33,8 @@ const Register: React.FC = () => {
 
   const checkSession = async () => {
     try {
-      // Replace with your session management logic
-      const user = await getSessionUser(); // Implement getSessionUser based on your auth logic
+     
+      const user = await getSessionUser(); 
       if (user.isRegistered) {
         setShowModal(true);
         setEmail(user.email);

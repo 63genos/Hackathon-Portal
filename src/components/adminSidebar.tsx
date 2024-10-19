@@ -60,7 +60,10 @@ const AdminSideBar: React.FC = () => {
                     </DrawerContent>
                 </DrawerOverlay>
             </Drawer>
-            <SignOutModal isVisible={isModalVisible} onConfirm={confirmSignOut} onClose={() => setModalVisible(false)} />
+            <SignOutModal isVisible={isModalVisible}
+                onClose={() => setModalVisible(false)}
+                onConfirm={confirmSignOut}
+                title='Are you sure you want to sign out?' />
         </Flex>
     );
 };

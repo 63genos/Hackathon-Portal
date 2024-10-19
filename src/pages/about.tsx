@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Flex, Text, Heading, Stack, Image, Center, Spacer, useMediaQuery } from '@chakra-ui/react';
-import Navbar from './components/Navbar';
-import Timeline from './components/timeline';
+import Navbar from '../components/Navbar';
+import Timeline from '../components/timeline';
 
 const AboutPage: React.FC = () => {
     const [isLargerThan1700] = useMediaQuery("(min-width: 1650px)");

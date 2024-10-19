@@ -2,14 +2,20 @@ import React, { useEffect } from 'react';
 import { SuperTokensWrapper } from 'supertokens-auth-react';
 import SuperTokensReact from 'supertokens-auth-react';
 import { frontendConfig, setRouter } from '../config/supertoken';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 if (typeof window !== 'undefined') {
     // Initialize SuperTokens only on the client-side
-    SuperTokensReact.init(frontendConfig());
+    // You will modify this later to use navigate
 }
 
 export const SuperTokensProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+    const navigate = useNavigate(); // Get navigate function from useNavigate
+
     useEffect(() => {
+        // Pass navigate to frontendConfig
+        SuperTokensReact.init(frontendConfig(navigate)); // Pass navigate as parameter
+
         const currentPath = window.location.pathname;
         // Here, you can set the router with the current path
         setRouter({
@@ -24,7 +30,7 @@ export const SuperTokensProvider: React.FC<React.PropsWithChildren<{}>> = ({ chi
             },
             pathname: currentPath,
         });
-    }, []);
+    }, [navigate]); // Add navigate to the dependency array
 
     return <SuperTokensWrapper>{children}</SuperTokensWrapper>;
 };

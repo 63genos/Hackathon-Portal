@@ -1,46 +1,46 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AdminLoadingPortal } from './loadingPortal'; 
-import { useAdminAuth } from '../hooks/useAdminAuth'; 
-import NotRegisteredModal from './notRegistered'; 
-import styles from './home.module.css'; 
-import Navbar from './Navbar'; 
-import { Text } from '@chakra-ui/react'; 
+import { useNavigate } from 'react-router-dom'; // Use React Router's navigate hook
+import { AdminLoadingPortal } from './loadingPortal';
+import { useAdminAuth } from '../hooks/useAdminAuth'; // Adjust this import based on your project structure
+import NotRegisteredModal from './notRegistered';
+import styles from './home.module.css'; // Adjust import path for CSS
+import Navbar from './Navbar';
+import { Text } from '@chakra-ui/react';
 
-interface AdminProtectedRouteProps {
-    WrappedComponent: React.ComponentType<any>;
-}
+const AdminProtectedRoute = (WrappedComponent: React.ComponentType) => {
+    const Wrapper: React.FC = (props) => {
+        const { isSessionExists, isAuthenticated, loading } = useAdminAuth();
+        const [isModalVisible, setModalVisible] = useState(false);
+        const navigate = useNavigate(); // React Router's equivalent for navigation
 
-const AdminProtectedRoute: React.FC<AdminProtectedRouteProps> = ({ WrappedComponent }) => {
-    const { isSessionExists, isAuthenticated, loading } = useAdminAuth(); 
-    const [isModalVisible, setModalVisible] = useState(false);
-    const navigate = useNavigate();
+        useEffect(() => {
+            if (!loading && !isSessionExists) {
+                navigate('/login', { state: { redirectTo: window.location.pathname } });
+            }
+        }, [loading, isSessionExists, navigate]);
 
-    useEffect(() => {
-        if (!loading && !isSessionExists) {
-           
-            navigate('/login', { state: { redirectTo: window.location.pathname } });
+        if (loading) {
+            return <AdminLoadingPortal />;
         }
-    }, [loading, isSessionExists, navigate]);
 
-    const onClose = () => {
-        setModalVisible(false);
-        navigate('/');
+        const onClose = async () => {
+            // signOut logic if required
+            setModalVisible(false);
+            navigate('/'); // Navigate to the homepage
+        };
+
+        return (
+            <>
+                {isAuthenticated ? (
+                    <WrappedComponent {...props} />
+                ) : isSessionExists ? (
+                    <NotAdminModal isVisible={true} onClose={onClose} />
+                ) : null}
+            </>
+        );
     };
 
-    if (loading) {
-        return <AdminLoadingPortal />; 
-    }
-
-    return (
-        <>
-            {isAuthenticated ? (
-                <WrappedComponent />
-            ) : isSessionExists ? (
-                <NotAdminModal isVisible={true} onClose={onClose} />
-            ) : null}
-        </>
-    );
+    return Wrapper;
 };
 
 interface NotAdminModalProps {
@@ -48,7 +48,7 @@ interface NotAdminModalProps {
     onClose: () => void;
 }
 
-const NotAdminModal: React.FC<NotAdminModalProps> = ({ isVisible, onClose }) => {
+function NotAdminModal({ isVisible, onClose }: NotAdminModalProps) {
     if (!isVisible) {
         return null;
     }
@@ -61,16 +61,18 @@ const NotAdminModal: React.FC<NotAdminModalProps> = ({ isVisible, onClose }) => 
                 isOpen={true}
                 onClose={onClose}
                 description={
-                    <Text color="white" fontWeight="normal" fontSize="1.25rem">
+                    <Text
+                        color="white"
+                        fontWeight="normal"
+                        fontSize="1.25rem">
                         {"You are not an Admin. If you are, then please contact us at "}
-                        <a style={{ color: '#007BFF', textDecoration: 'none' }} href="mailto:ecell@iith.ac.in">
-                            ecell@iith.ac.in
-                        </a>
+                        <a style={{ color: '#007BFF', textDecoration: 'none' }}
+                            href="mailto:ecell@iith.ac.in">ecell@iith.ac.in</a>
                     </Text>
                 }
             />
         </div>
     );
-};
+}
 
 export default AdminProtectedRoute;

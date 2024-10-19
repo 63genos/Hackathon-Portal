@@ -6,7 +6,7 @@ import CustomModal from './customModal';
 
 type ResponseProp = {
   teamName: string;
-  round_one: string | null;
+  round_one: string | null ;
   round_two: string | null;
   round_three: string | null;
   teamId: number;

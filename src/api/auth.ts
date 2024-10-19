@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-// Ensure that your environment variables are defined in a .env file.
-// For example: REACT_APP_BACKEND_URL=http://localhost:5000
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 export const getUserStatus = async (): Promise<number> => {

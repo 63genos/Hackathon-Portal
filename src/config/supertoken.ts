@@ -1,13 +1,9 @@
-// supertokensConfig.ts
-import ThirdParty, {
-    Google,
-    Github,
-    Apple,
-} from 'supertokens-auth-react/recipe/thirdparty';
+import ThirdParty, { Google } from 'supertokens-auth-react/recipe/thirdparty';
 import Session from 'supertokens-auth-react/recipe/session';
 import { SuperTokensConfig } from 'supertokens-auth-react/lib/build/types';
-import { getUserStatus } from '../api/auth'; // Ensure this function works with your API setup
+import { getUserStatus } from '../api/auth'; 
 import { NavigateFunction } from 'react-router-dom';
+
 
 const appInfo = {
     appName: 'Hackathon E-Cell',
@@ -17,53 +13,47 @@ const appInfo = {
     websiteBasePath: '/login',
 };
 
+
 export const frontendConfig = (navigate: NavigateFunction): SuperTokensConfig => {
     return {
         appInfo,
         getRedirectionURL: async (context) => {
-            if (context.action === "SUCCESS" && context.newSessionCreated) {
+            if (context.action === 'SUCCESS' && context.newSessionCreated) {
                 if (context.redirectToPath !== undefined) {
                     return context.redirectToPath;
                 }
 
                 const status = await getUserStatus();
                 if (status === 0) {
-                    return "/register";
+                    return '/register';
                 } else if (status === 1) {
-                    return "/admin";
+                    return '/admin';
                 } else {
-                    return "/dashboard";
+                    return '/dashboard';
                 }
             }
             return undefined;
         },
         recipeList: [
             ThirdParty.init({
-                style: `
-                    /* Your custom styles here */
-                `,
                 signInAndUpFeature: {
-                    providers: [
-                        Google.init(),
-                    ],
-                    
-                    termsOfServiceLink: "",
-                    privacyPolicyLink: "" 
+                    providers: [Google.init()],
                 },
                 
-                useShadowDom: false,
             }),
             Session.init(),
         ],
-        windowHandler: (orig) => {
-            return {
-                ...orig,
-                location: {
-                    ...orig.location,
-                    assign: (url) => navigate(url.toString()), 
-                    setHref: (url) => navigate(url.toString()),
-                },
-            };
-        },
+        windowHandler: (orig) => ({
+            ...orig,
+            location: {
+                ...orig.location,
+                assign: (url) => navigate(url.toString()),
+                setHref: (url) => navigate(url.toString()),
+            },
+        }),
     };
+};
+
+export const setRouter = (router: { push: (url: string) => void; replace: (url: string) => void; pathname: string }) => {
+    
 };
