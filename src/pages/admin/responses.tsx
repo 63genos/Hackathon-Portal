@@ -1,9 +1,9 @@
-import makeApiCall from './api/makeCall';
-import AdminLayout from './components/AdminLayout';
-import AdminProtectedRoute from './components/adminProtectedRoute';
-import AdminSideBar from './components/adminSidebar';
-import CustomHead from './components/customHead';
-import ResponseTable from './components/responseTable';
+import makeApiCall from '../../api/makeCall';
+import AdminLayout from '../../components/AdminLayout';
+import AdminProtectedRoute from '../../components/adminProtectedRoute';
+import AdminSideBar from '../../components/adminSidebar';
+import CustomHead from '../../components/customHead';
+import ResponseTable from '../../components/responseTable';
 import { Box, Flex, Heading, Spinner } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 

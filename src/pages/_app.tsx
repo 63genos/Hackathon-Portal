@@ -1,7 +1,7 @@
 import '../app/globals.css';
 import Head from 'next/head';
 import { AppProps } from 'next/app';
-import { SuperTokensProvider } from '@/app/components/supertokensProvider';
+import { SuperTokensProvider } from '../components/supertokensProvider';
 import CustomHead from '@/app/components/customHead';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import customTheme from '@/theme/theme';

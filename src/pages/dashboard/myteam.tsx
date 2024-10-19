@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Box, Flex, Heading, Spinner, Stack, Text } from "@chakra-ui/react";
-import MembersList from "./components/team";
-import ProtectedRoute from "./components/protectedRoutes";
-import DashboardLayout from "./components/DashboardLayout";
+import MembersList from "../../components/team";
+import ProtectedRoute from "../../components/protectedRoutes";
+import DashboardLayout from "../../components/DashboardLayout";
 import axios from "axios";
 
 // Replace this with actual backend URL

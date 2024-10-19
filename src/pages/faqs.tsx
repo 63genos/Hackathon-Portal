@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
-import Navbar from './components/Navbar';
-import FaqSection from './components/FAQ';
+import Navbar from '../components/Navbar';
+import FaqSection from '../components/FAQ';
 
 const FAQsPage: React.FC = () => {
     const [menuOpen, setMenuOpen] = useState(false);

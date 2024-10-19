@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AdminLoadingPortal } from './loadingPortal'; // Assuming this is a loading spinner component
-import { useAdminAuth } from '../hooks/useAdminAuth'; // Adjust this based on your custom hook
-import NotRegisteredModal from './notRegistered'; // Assuming this is your modal component
-import styles from './home.module.css'; // Adjust this path to where your CSS file is located
-import Navbar from './Navbar'; // Assuming Navbar is a component in your project
-import { Text } from '@chakra-ui/react'; // Chakra UI is fine for both Next.js and React
+import { AdminLoadingPortal } from './loadingPortal'; 
+import { useAdminAuth } from '../hooks/useAdminAuth'; 
+import NotRegisteredModal from './notRegistered'; 
+import styles from './home.module.css'; 
+import Navbar from './Navbar'; 
+import { Text } from '@chakra-ui/react'; 
 
 interface AdminProtectedRouteProps {
     WrappedComponent: React.ComponentType<any>;
 }
 
 const AdminProtectedRoute: React.FC<AdminProtectedRouteProps> = ({ WrappedComponent }) => {
-    const { isSessionExists, isAuthenticated, loading } = useAdminAuth(); // Adjust based on how you're handling auth
+    const { isSessionExists, isAuthenticated, loading } = useAdminAuth(); 
     const [isModalVisible, setModalVisible] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
         if (!loading && !isSessionExists) {
-            // Redirect to login if session doesn't exist
+           
             navigate('/login', { state: { redirectTo: window.location.pathname } });
         }
     }, [loading, isSessionExists, navigate]);
@@ -29,7 +29,7 @@ const AdminProtectedRoute: React.FC<AdminProtectedRouteProps> = ({ WrappedCompon
     };
 
     if (loading) {
-        return <AdminLoadingPortal />; // Show loading state while auth status is being checked
+        return <AdminLoadingPortal />; 
     }
 
     return (

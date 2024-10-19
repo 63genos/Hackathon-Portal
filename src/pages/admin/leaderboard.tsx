@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Table from './components/Table';
+import Table from '../../components/Table';
 import { Box, Flex, Heading, Spinner } from '@chakra-ui/react';
-import AdminSideBar from './components/adminSidebar';
-import AdminProtectedRoute from './components/adminProtectedRoute';
-import makeApiCall from './api/makeCall';
-import AdminLayout from './components/AdminLayout';
-import LeaderboardTable from './components/Table';
+import AdminSideBar from '../../components/adminSidebar';
+import AdminProtectedRoute from '../../components/adminProtectedRoute';
+import makeApiCall from '../../api/makeCall';
+import AdminLayout from '../../components/AdminLayout';
+import LeaderboardTable from '../../components/Table';
 
 type Team = {
     rank: number;

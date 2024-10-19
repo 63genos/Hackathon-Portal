@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Flex, Heading, Spinner } from '@chakra-ui/react';
-import AdminSideBar from './components/adminSidebar';
-import TeamsTable from './components/teamsTable';
-import AdminProtectedRoute from './components/adminProtectedRoute';
-import makeApiCall from './api/makeCall';
-import AdminLayout from './components/AdminLayout';
+import AdminSideBar from '../../components/adminSidebar';
+import TeamsTable from '../../components/teamsTable';
+import AdminProtectedRoute from '../../components/adminProtectedRoute';
+import makeApiCall from '../../api/makeCall';
+import AdminLayout from '../../components/AdminLayout';
 
 type Team = {
     teamName: string;

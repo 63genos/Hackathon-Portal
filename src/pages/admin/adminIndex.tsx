@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Flex } from '@chakra-ui/react';
-import AdminSideBar from './components/adminSidebar';
+import AdminSideBar from '../../components/adminSidebar';
 import { useNavigate } from 'react-router-dom';
 import Session from 'supertokens-auth-react/recipe/session';
-import AdminProtectedRoute from './components/adminProtectedRoute';
+import AdminProtectedRoute from '../../components/adminProtectedRoute';
 
 //problem with sidebar
 interface CustomHeadProps {
@@ -14,7 +14,7 @@ interface CustomHeadProps {
 const CustomHead: React.FC<CustomHeadProps> = ({ title, description }) => {
     useEffect(() => {
         document.title = title;
-        // You can add more metadata like meta description if needed
+        
     }, [title]);
 
     return null;

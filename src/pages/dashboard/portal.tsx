@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Box, Flex, Spinner } from "@chakra-ui/react";
-import ProtectedRoute from "./components/protectedRoutes";
-import CustomHead from "./components/customHead";
-import ProblemStatementComponent from "./components/problemStatement";
-import SubmitAnswer from "./components/submitAnswer";
+import ProtectedRoute from "../../components/protectedRoutes";
+import CustomHead from "../../components/customHead";
+import ProblemStatementComponent from "../../components/problemStatement";
+import SubmitAnswer from "../../components/submitAnswer";
 import axios from "axios";
-import DashboardLayout from "./components/DashboardLayout";
-import RoundSelector from "./components/roundHeading";
-import Navbar from "./components/Navbar";
-import CustomModal from "./components/customModal";
+import DashboardLayout from "../../components/DashboardLayout";
+import RoundSelector from "../../components/roundHeading";
+import Navbar from "../../components/Navbar";
+import CustomModal from "../../components/customModal";
 import { useNavigate } from "react-router-dom";
 import styles from './styles/home.module.css';
 
