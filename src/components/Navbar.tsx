@@ -6,13 +6,14 @@ import Session from 'supertokens-auth-react/recipe/session';
 import SignOutModal from './signOutModal';
 import { signOut } from 'supertokens-auth-react/recipe/thirdparty';
 import { useNavigate } from 'react-router-dom';
+import AboutPage from '../pages/about';
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [sessionButton, setSessionButton] = useState<string>('');
+  const [sessionButton, setSessionButton] = useState<string>('Sign In');
   const [isModalVisible, setModalVisible] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isLargerThan1310] = useMediaQuery("(min-width: 1310px)");
   const navigate = useNavigate();
 

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Image, Flex, Heading, Text, Stack, Spinner, useBreakpointValue, HStack, VStack, useMediaQuery } from '@chakra-ui/react';
+import { Image, Flex, Heading, Text, HStack, VStack, Spinner, useBreakpointValue, useMediaQuery } from '@chakra-ui/react';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
-import PrimaryButton, { SecondaryButton } from '../components/buttons';
 import Countdown from '../components/countdownComponent';
 import styles from '../styles/home.module.css';
 
@@ -15,7 +14,6 @@ const Home: React.FC = () => {
 
     const headingFontSize = useBreakpointValue({ base: "1.75rem", md: "3.3rem" });
     const textFontSize = useBreakpointValue({ base: "1rem", md: "1.5rem" });
-    const buttonFontSize = useBreakpointValue({ base: "1rem", md: "1.25rem" });
     const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
 
     const fetchDate = async () => {
@@ -33,7 +31,7 @@ const Home: React.FC = () => {
         } catch (error) {
             console.error('Error fetching date:', error);
         } finally {
-            setLoading(false);
+            setLoading(true);
         }
     };
 
@@ -42,43 +40,53 @@ const Home: React.FC = () => {
     }, []);
 
     const AfterCountDownEnds = () => (
-        <div className={styles.home}>
-            <Navbar />
-            <main className={styles.maincontent}>
-                <HStack>
-                    {isLargerThan768 && <IconComponent />}
-                    <VStack mx="24px">
-                        {!isLargerThan768 && <IconComponent width={150} height={84} />}
-                        <Heading mt={isLargerThan768 ? '0' : '32px'} fontSize={{ base: "2rem", md: "3rem" }} fontWeight='bold'>WAIT IS OVER!</Heading>
-                        <Text fontSize={{ base: "1.3rem", md: "1.5rem" }} mt={{ base: "4px", md: "12px" }}>Hackathon has already started</Text>
-                    </VStack>
-                    {isLargerThan768 && <IconComponent />}
-                </HStack>
-            </main>
-        </div>
+        <main className={styles.maincontent}>
+            <HStack>
+                {isLargerThan768 && <IconComponent />}
+                <VStack mx="24px">
+                    {!isLargerThan768 && <IconComponent width={150} height={84} />}
+                    <Heading mt={isLargerThan768 ? '0' : '32px'} fontSize={{ base: "2rem", md: "3rem" }} fontWeight='bold'>WAIT IS OVER!</Heading>
+                    <Text fontSize={{ base: "1.3rem", md: "1.5rem" }} mt={{ base: "4px", md: "12px" }}>Hackathon has already started</Text>
+                </VStack>
+                {isLargerThan768 && <IconComponent />}
+            </HStack>
+        </main>
     );
 
     if (loading) {
         return (
-            <Flex direction="column" align="center" justify="center" height="calc(100vh - 94px)" textAlign="center">
-                <Spinner size="xl" />
-            </Flex>
+            <>
+                <Navbar />
+                <Flex direction="column" align="center" justify="center" height="calc(100vh - 94px)" textAlign="center">
+                    <Spinner size="xl" />
+                </Flex>
+            </>
         );
     }
 
-    // Check if targetDate is available
+    
     if (!targetDate) {
         return (
-            <Flex direction="column" align="center" justify="center" height="calc(100vh - 94px)" textAlign="center">
-                <Spinner size="xl" />
-                <Text mt="4">Fetching event details...</Text>
-            </Flex>
+            <>
+                <Navbar />
+                <Flex direction="column" align="center" justify="center" height="calc(100vh - 94px)" textAlign="center">
+                    <Spinner size="xl" />
+                    <Text mt="4">Fetching event details...</Text>
+                </Flex>
+            </>
         );
     }
 
-    return countdownEnded ? <AfterCountDownEnds /> : <Countdown targetDate={targetDate} />;
+    return (
+        <>
+        
+        <Navbar />
+            {countdownEnded ? <AfterCountDownEnds /> : <Countdown targetDate={targetDate} />}
+        
+            
+        </>
+    );
 };
-
 
 interface IconComponentProps {
     width?: number;

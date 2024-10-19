@@ -1,4 +1,4 @@
-// App.tsx (React version)
+
 import React from 'react';
 import './globals.css';
 import { ChakraProvider } from '@chakra-ui/react';
