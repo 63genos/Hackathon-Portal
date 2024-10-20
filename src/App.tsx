@@ -13,7 +13,7 @@ function App() {
         <PageIndex/>
       </Router> */}
       <Router>
-        <Navbar/>
+        <PageIndex/>
         
       </Router>
     </ChakraProvider>

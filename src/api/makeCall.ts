@@ -12,7 +12,7 @@ interface CustomApiError extends Error {
 }
 
 async function makeApiCall(endpoint: string, options: ApiCallOptions) {
-    // Change to REACT_APP_BACKEND_URL for a React app
+    
     const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
     try {
