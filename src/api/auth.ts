@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import React from 'react';
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 export const getUserStatus = async (): Promise<number> => {

@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "react-scripts start",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
@@ -16,6 +17,7 @@
     "@emotion/styled": "^11.13.0",
     "@types/react-helmet": "^6.1.11",
     "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
     "framer-motion": "^11.11.9",
     "hackathon-portal": "file:",
     "react": "^18.3.1",
